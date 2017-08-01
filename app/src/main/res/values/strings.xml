@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Chatbot3</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_info">The information to be displayed</string>
+    <string name="text_progress">progress text</string>
+</resources>

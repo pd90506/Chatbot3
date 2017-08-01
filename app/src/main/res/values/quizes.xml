@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="quiz1">Is it your first time having a baby?</string>
+    <string name="quiz2">What is your highest degree earned?</string>
+    <string name="quiz3">Do you prefer breast feeding?</string>
+</resources>
