@@ -5,7 +5,7 @@
     android:id="@+id/quiz_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.pd905.chatbot3.Activities.QuizActivity">
+    tools:context="com.example.pd905.chatbot3.activities.QuizActivity">
 
 
 

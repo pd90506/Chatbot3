@@ -1,24 +1,19 @@
-package com.example.pd905.chatbot3.Fragments;
+package com.example.pd905.chatbot3.fragments;
 
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringDef;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterViewAnimator;
+import android.widget.AdapterViewFlipper;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.pd905.chatbot3.Activities.QuizActivity;
-import com.example.pd905.chatbot3.Adapter.QuizAdapter;
+import com.example.pd905.chatbot3.adapter.QuizAdapter;
 import com.example.pd905.chatbot3.R;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 
 public class QuizFragment extends Fragment {
@@ -57,7 +52,8 @@ public class QuizFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quiz, container, false);
+        View view = inflater.inflate(R.layout.fragment_quiz, container, false);
+        return view;
     }
 
     @Override
@@ -65,9 +61,16 @@ public class QuizFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //set UI components
+        mQuizView = (AdapterViewFlipper) view.findViewById(R.id.quiz_content);
+        mQuizAdapter = new QuizAdapter(getContext());
+        mQuizView.setAdapter(mQuizAdapter);
+
+        // Here to start replace views
+        mQuizView.setSelection(1);
 
 
     }
+
 
     //Set progress bar UI components
     private void initProgressToolbar(View view) {

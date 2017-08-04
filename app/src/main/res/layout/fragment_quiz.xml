@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.pd905.chatbot3.Fragments.QuizFragment">
+    tools:context="com.example.pd905.chatbot3.fragments.QuizFragment">
 
     <TextView
         android:id="@+id/toolbar_sign_in"
@@ -17,62 +17,12 @@
         android:text="Evalutaion" />
 
 
-    <FrameLayout
+    <AdapterViewFlipper
         android:id="@+id/quiz_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_gravity="center">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/quiz_card_height"
-                android:background="@color/light_grey"
-                android:textColor="@color/colorAccent"
-                android:gravity="center"
-                android:text="@string/quiz1"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginEnd="@dimen/spacing_double"
-                android:layout_marginStart="@dimen/spacing_double">
-
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <RadioButton
-                        android:id="@+id/choice_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Yes"/>
-
-                    <RadioButton
-                        android:id="@+id/choice_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="No" />
-                </RadioGroup>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:text="Submit"/>
-
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-
-    </FrameLayout>
+    </AdapterViewFlipper>
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/progress_toolbar"
