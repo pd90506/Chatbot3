@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,7 +7,7 @@
     tools:context="com.example.pd905.chatbot3.fragments.QuizFragment">
 
     <TextView
-        android:id="@+id/toolbar_sign_in"
+        android:id="@+id/toolbar_evaluation"
         style="@style/Chatbot.TextAppearance.Title"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
@@ -16,14 +17,6 @@
         android:paddingStart="16dp"
         android:text="Evalutaion" />
 
-
-    <AdapterViewFlipper
-        android:id="@+id/quiz_content"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
-    </AdapterViewFlipper>
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/progress_toolbar"
         android:layout_width="match_parent"
@@ -31,7 +24,7 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        android:weightSum="1">
+        android:layout_alignParentBottom="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,7 +54,32 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <AdapterViewFlipper
+        android:id="@+id/quiz_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/progress_toolbar"
+        android:layout_below="@id/toolbar_evaluation">
+
+    </AdapterViewFlipper>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_tick"
+        app:fabSize="normal"
+        android:layout_gravity="bottom|end"
+        android:layout_marginTop="119dp"
+        android:layout_marginEnd="15dp"
+        android:layout_below="@+id/toolbar_evaluation"
+        android:layout_alignParentEnd="true" />
 
 
 
-</LinearLayout>
+
+
+
+
+</RelativeLayout>
