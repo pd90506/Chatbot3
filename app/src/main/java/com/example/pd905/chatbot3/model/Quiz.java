@@ -24,7 +24,7 @@ public abstract class Quiz {
         return mQuizDetail;
     }
 
-    public abstract int getType();
+    public abstract QuizType getType();
 
 
     public abstract String[] getAnswerList();

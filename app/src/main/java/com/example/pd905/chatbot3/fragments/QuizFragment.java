@@ -21,6 +21,10 @@ import com.example.pd905.chatbot3.R;
 
 public class QuizFragment extends Fragment{
 
+    // public property, to indicate the process of evaluation.
+    public boolean isDone = false;
+
+    //private properties
     private TextView mProgressText;
     private ProgressBar mQuizProgress;
     private int mQuizSize;

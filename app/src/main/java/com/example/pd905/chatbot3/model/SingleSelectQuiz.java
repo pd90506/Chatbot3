@@ -1,8 +1,6 @@
 package com.example.pd905.chatbot3.model;
 
 
-import java.util.List;
-
 /**
  * Created by pd905 on 2017/8/3.
  */
@@ -20,8 +18,8 @@ public class SingleSelectQuiz extends Quiz {
         return mAnswerList;
     }
 
-    public int getType() {
-        //The type code for single selection quiz is 0
-        return 0;
+    public QuizType getType() {
+        //The QuizType is defined in QuizType enum file
+        return QuizType.SINGLE_SELECTION_QUIZ;
     }
 }

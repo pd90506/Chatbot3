@@ -97,8 +97,8 @@ public class SignInFragment extends Fragment {
         mSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToQuiz("foo@example.com", "hello");
-                //attemptLogin();
+                //goToQuiz("foo@example.com", "hello");
+                attemptLogin();
             }
         });
 
