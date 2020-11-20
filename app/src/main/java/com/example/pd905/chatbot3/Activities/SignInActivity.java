@@ -1,9 +1,9 @@
-package com.example.pd905.chatbot3.Activities;
+package com.example.pd905.chatbot3.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.pd905.chatbot3.Fragments.SignInFragment;
+import com.example.pd905.chatbot3.fragments.SignInFragment;
 import com.example.pd905.chatbot3.R;
 
 public class SignInActivity extends AppCompatActivity {

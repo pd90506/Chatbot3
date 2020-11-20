@@ -1,33 +1,32 @@
-package com.example.pd905.chatbot3.Fragments;
+package com.example.pd905.chatbot3.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringDef;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterViewAnimator;
+import android.widget.AdapterViewFlipper;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.pd905.chatbot3.Activities.QuizActivity;
-import com.example.pd905.chatbot3.Adapter.QuizAdapter;
+import com.example.pd905.chatbot3.activities.ChatbotActivity;
+import com.example.pd905.chatbot3.adapter.QuizAdapter;
 import com.example.pd905.chatbot3.R;
 
-import org.w3c.dom.Text;
 
-import java.util.List;
-
-
-public class QuizFragment extends Fragment {
+public class QuizFragment extends Fragment{
 
     private TextView mProgressText;
     private ProgressBar mQuizProgress;
     private int mQuizSize;
     private QuizAdapter mQuizAdapter;
     private AdapterViewAnimator mQuizView;
+    private  int mQuizId; // determine which quiz is currently on screen
     private String username;
 
 
@@ -57,7 +56,8 @@ public class QuizFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quiz, container, false);
+        View view = inflater.inflate(R.layout.fragment_quiz, container, false);
+        return view;
     }
 
     @Override
@@ -65,46 +65,63 @@ public class QuizFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //set UI components
+        mQuizView = (AdapterViewFlipper) view.findViewById(R.id.quiz_content);
+        mQuizAdapter = new QuizAdapter(getContext());
+        mQuizView.setAdapter(mQuizAdapter);
+
+        // Here to start replace views
+        mQuizSize = mQuizAdapter.getCount();
+        mQuizId = 0;
+        mQuizView.setSelection(mQuizId);
+
+        FloatingActionButton nextButton = (FloatingActionButton) view
+                .findViewById(R.id.next_button);
+        nextButton.setClickable(true);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToNext();
+            }
+        });
+
+        //init progress bar here
+        initProgressToolbar(view);
+
 
 
     }
+
+    private void goToNext() {
+        if (mQuizId < mQuizSize - 1) {
+            mQuizId++;
+            mQuizView.showNext();
+
+            //set progress
+            mQuizProgress.setProgress(mQuizId + 1);
+            mProgressText.setText("Progress: " + Integer.toString(mQuizId + 1) + "/" + Integer.toString(mQuizSize));
+        } else {
+            goToChatbot();
+        }
+
+    }
+
+    private void goToChatbot() {
+        Intent intent = new Intent(getContext(), ChatbotActivity.class);
+        startActivity(intent);
+    }
+
+
 
     //Set progress bar UI components
     private void initProgressToolbar(View view) {
-        Quiz quiz1 = new Quiz("1", getString(R.string.quiz1));
-        Quiz quiz2 = new Quiz("2", getString(R.string.quiz2));
-        Quiz quiz3 = new Quiz("3", getString(R.string.quiz3));
-        final Quiz[] quizzes = new Quiz[]{quiz1, quiz2, quiz3 };
-
-        mQuizSize = quizzes.length;
         mProgressText = (TextView) view.findViewById(R.id.progress_text);
+        mProgressText.setText("Progress " + Integer.toString(mQuizId + 1) + "/" + Integer.toString(mQuizSize));
+
         mQuizProgress = (ProgressBar) view.findViewById(R.id.quiz_progress);
-        //mQuizProgress.setMax(mQuizSize);
+        mQuizProgress.setMax(mQuizSize);
+        mQuizProgress.setProgress(mQuizId + 1);
     }
 
-    private class Quiz {
-        private String quizId;
-        private String quizContent;
 
-        public Quiz(String quizId, String quizContent) {
-            this.quizId = quizId;
-            this.quizContent = quizContent;
-        }
 
-        public String getQuizId() {
-            return quizId;
-        }
-
-        public void setQuizId(String quizId) {
-            this.quizId = quizId;
-        }
-
-        public String getQuizContent() {
-            return quizContent;
-        }
-
-        public void setQuizContent(String quizContent) {
-            this.quizContent = quizContent;
-        }
-    }
 }

@@ -3,7 +3,7 @@
     android:id="@+id/fragment_sign_in_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.pd905.chatbot3.Fragments.SignInFragment">
+    tools:context="com.example.pd905.chatbot3.fragments.SignInFragment">
 
 
     <ProgressBar

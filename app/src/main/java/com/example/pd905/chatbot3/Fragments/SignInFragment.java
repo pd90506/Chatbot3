@@ -1,8 +1,6 @@
-package com.example.pd905.chatbot3.Fragments;
+package com.example.pd905.chatbot3.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,12 +12,11 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.TextView;
 
-import com.example.pd905.chatbot3.Activities.ChatbotActivity;
-import com.example.pd905.chatbot3.Activities.QuizActivity;
+import com.example.pd905.chatbot3.activities.ChatbotActivity;
 import com.example.pd905.chatbot3.R;
+import com.example.pd905.chatbot3.activities.QuizActivity;
 
 public class SignInFragment extends Fragment {
     private static final String ARG_EDIT = "EDIT";
@@ -100,7 +97,8 @@ public class SignInFragment extends Fragment {
         mSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                attemptLogin();
+                goToQuiz("foo@example.com", "hello");
+                //attemptLogin();
             }
         });
 
@@ -162,7 +160,7 @@ public class SignInFragment extends Fragment {
     }
 
     private void goToQuiz(String email, String password) {
-        Intent intent = new Intent(getActivity(), ChatbotActivity.class);
+        Intent intent = new Intent(getActivity(), QuizActivity.class);
         intent.putExtra("USER_NAME", email);
         startActivity(intent);
     }
