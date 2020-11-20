@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.pd905.chatbot3.Activities.ChatbotActivity">
+    tools:context="com.example.pd905.chatbot3.activities.ChatbotActivity">
 
     <TextView
         android:id="@+id/toolbar_chatbot"
@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
         <ListView
-            android:id="@+id/listView"
+            android:id="@+id/messageList"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:background="@color/light_grey"
@@ -45,26 +45,31 @@
             android:orientation="horizontal"
             android:layout_alignParentBottom="true">
 
-            <ImageView
-                android:id="@+id/iv_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/bot" />
+
+            <ai.api.ui.AIButton
+                android:id="@+id/ai_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/ApiAi.Microphone"/>
+
 
             <EditText
-                android:id="@+id/et_message"
+                android:id="@+id/input_message"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:inputType="text"
+                android:imeOptions="actionSend" />
 
             <ImageButton
                 android:id="@+id/btn_send"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_send_24dp"
-                android:text="Send" />
+                android:text="Send"
+                android:onClick="sendOnClick" />
         </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
